@@ -5,6 +5,7 @@ Habit Bloom is a browser-based habit tracker built with React and Vite. Add habi
 ## Features
 
 - **Dashboard:** View your habits in a day-by-day grid for a selected month. Use the month arrows to move between months.
+- **Daily encouragement:** See a motivational habit-building quote on the dashboard that changes each day.
 - **Daily tracking:** Mark a habit complete or incomplete for a date by selecting its cell in the dashboard grid.
 - **Progress summaries:** The dashboard shows total habits, completions this month, monthly consistency, and today's progress.
 - **Heatmap:** Browse months and see each day colored according to the percentage of habits completed that day:

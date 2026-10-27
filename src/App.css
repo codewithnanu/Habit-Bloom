@@ -64,6 +64,33 @@
 .metric-value { margin-top: 8px !important; color: var(--ink); font-family: Manrope, sans-serif; font-size: 28px; font-weight: 800; }
 .metric-caption { margin-top: 4px !important; color: var(--muted); font-size: 12px; }
 
+.daily-quote {
+  display: grid;
+  gap: 8px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 16px;
+  background: linear-gradient(110deg, var(--surface), var(--accent-soft));
+  box-shadow: var(--shadow);
+}
+
+.daily-quote-label {
+  color: var(--accent-hover);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.daily-quote blockquote {
+  margin: 0;
+  color: var(--ink);
+  font-family: Manrope, sans-serif;
+  font-size: clamp(16px, 2vw, 21px);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .dashboard-today h1 {
   margin: 0;
   color: var(--ink);
@@ -125,6 +152,7 @@
   .metrics { gap: 10px; }
   .metric-card { padding: 12px; }
   .metric-value { font-size: 24px; }
+  .daily-quote { padding: 16px; }
   .dashboard-month { gap: 8px; }
   .dashboard-month span { font-size: 15px; }
 }

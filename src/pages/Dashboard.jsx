@@ -5,14 +5,28 @@ import HabitGrid from '../components/HabitGrid'
 import MetricCard from '../components/MetricCard'
 
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const dailyQuotes = [
+  'Small steps, repeated daily, become meaningful progress.',
+  'You do not need a perfect day; just begin with one small step.',
+  'Every time you show up, you strengthen the habit you are building.',
+  'Progress grows when you keep going, even on ordinary days.',
+  'Make today a little easier for your future self.',
+  'A habit is built one choice at a time. Make the next one count.',
+  'Consistency is returning to your goal, one day at a time.',
+]
 
 export default function Dashboard({ habits, markHabitCompleted }) {
+  const currentDate = new Date()
   const [selectedDate, setSelectedDate] = useState(() => {
-    const today = new Date()
-    return { year: today.getFullYear(), month: today.getMonth() }
+    return { year: currentDate.getFullYear(), month: currentDate.getMonth() }
   })
+  const dayOfYear = Math.floor(
+    (Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) -
+      Date.UTC(currentDate.getFullYear(), 0, 0)) / 86400000
+  )
+  const dailyQuote = dailyQuotes[dayOfYear % dailyQuotes.length]
    const numberOfDays = new Date(selectedDate.year, selectedDate.month + 1, 0).getDate()
-   const today = new Date().getDate()
+   const today = currentDate.getDate()
 const monthPrefix = `${selectedDate.year}-${selectedDate.month + 1}-`
 const count = habits.reduce(
   (total, habit) =>
@@ -54,6 +68,11 @@ const metrics = [
           {metrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}
         </section>
         </div>
+
+        <aside className="daily-quote" aria-label="Daily encouragement">
+          <span className="daily-quote-label">A LITTLE ENCOURAGEMENT</span>
+          <blockquote>{dailyQuote}</blockquote>
+        </aside>
 
         <div className="habit-list" id="habits">
         {habits.length > 0 ? (
