@@ -5,7 +5,7 @@
   gap: 28px;
   width: min(100%, 1440px);
   margin: 0 auto;
-  padding: 0 32px 48px;
+  padding: 32px 32px 48px;
 }
 
 .heatmap-panel {
@@ -135,13 +135,13 @@
 .heatmap-legend > span:last-child { margin-left: 4px; }
 
 @media (max-width: 768px) {
-  .heatmap-page { gap: 16px; padding: 0 22px 36px; }
+  .heatmap-page { gap: 16px; padding: 26px 22px 36px; }
   .heatmap-panel { padding: 22px 18px; }
   .heatmap-heading { margin-bottom: 22px; }
 }
 
 @media (max-width: 576px) {
-  .heatmap-page { padding-right: 14px; padding-left: 14px; }
+  .heatmap-page { padding: 20px 14px 32px; }
   .heatmap-heading { flex-direction: column; }
   .heatmap-month-navigation { align-self: stretch; justify-content: space-between; }
   .heatmap-panel { padding: 18px 12px; }
