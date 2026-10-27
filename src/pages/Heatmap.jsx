@@ -56,9 +56,10 @@ level=0;
   })
 
   return (
-    <main className="heatmap-page">
+    <>
       <Headers />
-      <section className="heatmap-panel" aria-labelledby="heatmap-title">
+      <main className="heatmap-page">
+        <section className="heatmap-panel" aria-labelledby="heatmap-title">
         <div className="heatmap-heading">
           <div>
             <h1 id="heatmap-title">Habit activity</h1>
@@ -106,7 +107,8 @@ level=0;
           <span className="heatmap-cell level-4" aria-hidden="true" />
           <span>More</span>
         </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   )
 }

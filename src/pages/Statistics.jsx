@@ -52,9 +52,10 @@ export default function Statistics({ habits }) {
   }
 
   return (
-    <main className="statistics-page">
+    <>
       <Headers />
-      <h1>Habit progress</h1>
+      <main className="statistics-page">
+        <h1>Habit progress</h1>
 
       <section className="progress-section" aria-labelledby="daily-progress-title">
         <h2 id="daily-progress-title">Daily progress — {monthNames[month]} {year}</h2>
@@ -91,6 +92,7 @@ export default function Statistics({ habits }) {
           ))}
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }

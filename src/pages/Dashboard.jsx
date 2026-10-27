@@ -41,9 +41,10 @@ const metrics = [
   }
 
   return (
-    <main className="tracker-app" id="dashboard">
+    <>
       <Headers />
-      <div className="dashboard-toolbar">
+      <main className="tracker-app" id="dashboard">
+        <div className="dashboard-toolbar">
         <div className="dashboard-month">
           <button type="button" onClick={() => changeMonth(-1)} aria-label="Previous month">‹</button>
           <span>{monthNames[selectedDate.month]} {selectedDate.year}</span>
@@ -52,9 +53,9 @@ const metrics = [
         <section className="metrics" aria-label="Habit metrics">
           {metrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}
         </section>
-      </div>
+        </div>
 
-      <div className="habit-list" id="habits">
+        <div className="habit-list" id="habits">
         {habits.length > 0 ? (
           <HabitGrid
             year={selectedDate.year}
@@ -70,7 +71,8 @@ const metrics = [
             <Link className="empty-habits-link" to="/addhabit">Add your first habit</Link>
           </section>
         )}
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   )
 }

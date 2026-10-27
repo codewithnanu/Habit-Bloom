@@ -1,5 +1,6 @@
 .statistics-page {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: start;
   gap: 24px;
   width: min(100%, 1440px);
