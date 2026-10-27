@@ -1,0 +1,130 @@
+﻿.habit-list {
+  --label-width: 170px;
+  --day-width: 28px;
+  --day-gap: 6px;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: auto;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  scrollbar-color: var(--line) var(--surface-soft);
+  scrollbar-width: thin;
+}
+
+.monthly-grid {
+  display: grid;
+  grid-template-columns: var(--label-width) max-content;
+  align-items: center;
+  width: max-content;
+  min-width: 100%;
+  min-height: 44px;
+  border-bottom: 1px solid var(--line);
+}
+.monthly-grid > div:first-child {
+  display: flex;
+  width: var(--label-width);
+  min-height: 42px;
+  align-items: center;
+  overflow: hidden;
+  padding-right: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.monthly-grid:first-child > div:first-child {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.monthly-grid > .grid {
+  display: grid;
+  grid-template-columns: repeat(31, var(--day-width));
+  gap: var(--day-gap);
+  align-items: center;
+}
+.calendar-day-heading {
+  display: grid;
+  height: 42px;
+  align-content: center;
+  justify-items: center;
+  gap: 2px;
+}
+.calendar-day-heading span:first-child { color: var(--muted); font-size: 9px; }
+.calendar-day-heading span:last-child { color: var(--ink); font-size: 10px; }
+.habit-label-cell .habit-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.monthly-grid .grid button {
+  display: grid;
+  width: var(--day-width);
+  height: var(--day-width);
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.monthly-grid .grid button:hover { border-color: var(--focus); background: var(--accent-soft); color: var(--accent-hover); }
+.monthly-grid .grid button.completed-day { border-color: var(--accent); background: var(--accent); color: #fff; }
+.monthly-grid .grid button.completed-day:hover { border-color: var(--accent-hover); background: var(--accent-hover); }
+.monthly-grid .grid button.today,
+.monthly-grid .grid button.today:hover { outline: 2px solid black; outline-offset: 1px; }
+.monthly-grid.summary-row { min-height: 36px; }
+.monthly-grid.summary-row > div:first-child { min-height: 34px; color: var(--muted); font-size: 11px; font-weight: 700; }
+.monthly-grid.progress-row { border-top: 1px solid var(--line); }
+.monthly-grid .grid > span {
+  display: grid;
+  width: var(--day-width);
+  height: 24px;
+  place-items: center;
+  color: var(--muted);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.monthly-grid.progress-row .grid > span { color: var(--accent-hover); font-weight: 700; }
+
+@media (max-width: 600px) {
+  .habit-list { --label-width: 150px; --day-width: 26px; --day-gap: 5px; padding: 10px; }
+}
+
+
+.empty-habits {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: min(100%, 520px);
+  margin: 28px auto;
+  padding: 36px 28px;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  background: var(--surface-soft);
+  text-align: center;
+}
+.empty-habits h2 { margin: 0; color: var(--ink); font-family: Manrope, sans-serif; font-size: 21px; }
+.empty-habits p { max-width: 380px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.empty-habits-link {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.empty-habits-link:hover { background: var(--accent-hover); }
