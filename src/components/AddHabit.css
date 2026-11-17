@@ -263,6 +263,7 @@
 }
 
 .add-habit-form .error-message { min-height: 16px; color: var(--danger); font-size: 12px; }
+.add-habit-form .success-message { min-height: 16px; color: var(--accent-hover); font-size: 12px; }
 
 .add-habit-form .add-habit-submit {
   min-height: 46px;

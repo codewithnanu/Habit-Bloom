@@ -2,10 +2,11 @@
 import React from 'react'
 import Headers from './Headers'
 
-export default function AddHabit({ habits, setHabits, onAdded }) {
+export default function AddHabit({ habits, setHabits }) {
   const [habitName, setHabitName] = React.useState('')
   const [habitDescription, setHabitDescription] = React.useState('')
   const [errorMessage, setErrorMessage] = React.useState('')
+  const [successMessage, setSuccessMessage] = React.useState('')
   const emoji = ['🏃', '🧘', '📚', '💧', '😴', '🥗', '🧹', '🎨', '🧠', '🚶', '🏋️', '🧘‍♀️']
   const [currentEmoji,setCurrentEmoji]=React.useState('🏃')
 const [colors,setColors]=React.useState(["lavender","peach","blue","pink","yellow","mint" ])
@@ -14,25 +15,25 @@ const [currentColor,setCurrentColor]=React.useState("lavender")
 
   function handleAddHabit(event) {
     event.preventDefault()
+    setSuccessMessage('')
 
     if (!habitName.trim()) {
-      setErrorMessage('Please enter both habit name and description')
+      setErrorMessage('Please enter a habit name')
       return
     }
 
     setErrorMessage('')
     const newHabit = {
       name: habitName.trim(),
-      color:currentColor,
-      emoji:currentEmoji,
+      color: currentColor,
+      emoji: currentEmoji,
       id: `habit-${habits.length + 1}`,
       completedDays: [],
     }
 
     setHabits([...habits, newHabit])
     setHabitName('')
-  
-
+    setSuccessMessage('Habit added successfully!')
   }
   function changeEmoji(value){
     setCurrentEmoji(value)
@@ -45,9 +46,7 @@ const [currentColor,setCurrentColor]=React.useState("lavender")
   
   }
   function deleteHabit(habitId){
-  setHabits(  habits.filter((habit)=>{
-      habit.id!=habitId
-    }))
+    setHabits((currentHabits) => currentHabits.filter((habit) => habit.id !== habitId))
   }
   return (
     <>
@@ -132,6 +131,7 @@ const [currentColor,setCurrentColor]=React.useState("lavender")
               aria-label="Habit description"
             /> */}
             <span className="error-message">{errorMessage}</span>
+            <span className="success-message" role="status">{successMessage}</span>
             <button className="add-habit-submit" type="submit">Add Habit</button>
           </form>
           </section>
