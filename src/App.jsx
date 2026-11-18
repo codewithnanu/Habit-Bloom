@@ -1,4 +1,5 @@
 ﻿import React from 'react'
+import axios from 'axios'
 import './App.css'
 import { Route, Routes } from 'react-router'
 import AddHabit from './components/AddHabit'
@@ -7,19 +8,20 @@ import Heatmap from './pages/Heatmap'
 import Statistics from './pages/Statistics'
 import Settings from './pages/Settings'
 
-function App() {
-  const [habits, setHabits] = React.useState(() => {
-    try {
-      const savedHabits = JSON.parse(localStorage.getItem('habits') ?? '[]')
-      return Array.isArray(savedHabits) ? savedHabits : []
-    } catch {
-      return []
-    }
-  })
 
-  React.useEffect(() => {
-    localStorage.setItem('habits', JSON.stringify(habits))
-  }, [habits])
+function App() {
+  const [habits, setHabits] = React.useState([]);
+   React.useEffect(()=>{
+axios.get('http://localhost:3000/habits')
+.then((response)=>{
+console.log( response.data)
+setHabits(response.data)
+})
+},[])
+
+  // React.useEffect(() => {
+  //   localStorage.setItem('habits', JSON.stringify(habits))
+  // }, [habits])
 
   function markHabitCompleted(id, date) {
     setHabits((currentHabits) => currentHabits.map((habit) => {

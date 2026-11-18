@@ -1,7 +1,8 @@
 ﻿import './AddHabit.css'
 import React from 'react'
 import Headers from './Headers'
-
+import axios from 'axios'
+import {useEffect} from 'react'
 export default function AddHabit({ habits, setHabits }) {
   const [habitName, setHabitName] = React.useState('')
   const [habitDescription, setHabitDescription] = React.useState('')
@@ -27,7 +28,7 @@ const [currentColor,setCurrentColor]=React.useState("lavender")
       name: habitName.trim(),
       color: currentColor,
       emoji: currentEmoji,
-      id: `habit-${habits.length + 1}`,
+     
       completedDays: [],
     }
 
