@@ -12,7 +12,7 @@ import Settings from './pages/Settings'
 function App() {
   const [habits, setHabits] = React.useState([]);
    React.useEffect(()=>{
-axios.get('http://localhost:3000/habits')
+axios.get('/api/habits')
 .then((response)=>{
 console.log( response.data)
 setHabits(response.data)
